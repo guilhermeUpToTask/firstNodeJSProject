@@ -15,5 +15,8 @@ http.createServer((request, response) =>{ // create serve with a resquet and a r
         message : "rota do usuario"
       }));
     }
+      response.end(JSON.stringify({
+        message : "rota nao encontrada" 
+      }));
     
 }).listen(4001, () => console.log('serve running in port 4001')); // when the port being listen recive something will be redirect to here
