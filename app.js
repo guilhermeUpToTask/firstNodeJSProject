@@ -1,3 +1,3 @@
-const express = require("express");
+const express = require("express"); //import express
 
-const app = express();
+const app = express(); // iniatilizate express like a function

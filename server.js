@@ -4,7 +4,7 @@ const http = require('http'); // import the htt library
 http.createServer((request, response) =>{ // create serve with a resquet and a response
     response.writeHead(200, { 'Content-Type': 'application/json' }); // send a response with a type and the type of the content
     
-
+ // Find route in the request
     if (request.url === "/produtos"){
       response.end(JSON.stringify({
         message: "rota dos produtos"
@@ -15,6 +15,7 @@ http.createServer((request, response) =>{ // create serve with a resquet and a r
         message : "rota do usuario"
       }));
     }
+    // if not found send this message
       response.end(JSON.stringify({
         message : "rota nao encontrada" 
       }));
