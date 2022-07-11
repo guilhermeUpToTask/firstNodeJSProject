@@ -1,0 +1,10 @@
+{
+  "name": "mynodejs_project",
+  "version": "1.0.0",
+  "description": "first project using nodesj",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "guilherme",
+  "license": "MIT"
+}
