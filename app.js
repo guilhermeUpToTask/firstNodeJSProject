@@ -67,10 +67,13 @@ app.put("/products/:id", (request, response) => {
 app.delete("/products/:id", (request, response) => {
     const {id} = request.params;
     const productIndex = products.findIndex(product => product.id === id);
-
-    products.splice(productIndex, 1);
-
-    response.json({message: "product sucessfully deleted"});
+    
+    if (productIndex >= 0){ // verify if there is a product
+        products.splice(productIndex, 1);
+        response.json({message: "product sucessfully deleted"});
+    }else{
+        response.json({message: "product not found"});
+    }
 });
 
 app.listen(4002, () => console.log("server is running in port 4002"));
