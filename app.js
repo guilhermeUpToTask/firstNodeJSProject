@@ -15,6 +15,8 @@ const products = []; // a simples imitation of a database
     DELETE = OF COURSE DELETE A DATA
 */
 
+// ### POST ROUTE TO INSERT A NEW PRODUCT TO OUR DATA
+
 app.post("/products",(request,response) => {
     // expect reciving name and price of a product 
     
@@ -30,6 +32,45 @@ app.post("/products",(request,response) => {
     products.push(product) //push our product to the products database
 
     response.json(product); // send our product back
-})
+});
+
+//  ### GET ROUTE TO SEND ALL PRODUCTS ###
+app.get("/products", (request, response) => {
+    response.json(products);
+});
+
+// ### GET ROUTE TO FIND A PRODUCT IN OUR DATABASE 
+app.get("/products/:id", (request, response) => { //expecting a parameter
+    const {id} = request.params; // get the id atribute from params
+    const product = products.find(prdct => prdct.id === id); // find the product usind the id
+    response.json(product); // send it back the product we find
+});
+
+
+// ### PUT ROUTE TO UPDATE A PRODUCT
+app.put("/products/:id", (request, response) => {
+    const {id} = request.params;
+    const {name, price} = request.body; // get name and price from body object
+
+    const productIndex = products.findIndex(product => product.id === id); // find the index in our database of product
+
+    products[productIndex] = {
+        ...products[productIndex], // use rest parameters to fulffil the object minus =>
+        name, // the name
+        price// and the price
+    }
+
+    response.json({messsage : "product successfully changed"}); // send it back the message 
+});
+
+// ### DELETE ROUTE TO DELETE A PRODUCT
+app.delete("/products/:id", (request, response) => {
+    const {id} = request.params;
+    const productIndex = products.findIndex(product => product.id === id);
+
+    products.splice(productIndex, 1);
+
+    response.json({message: "product sucessfully deleted"});
+});
 
 app.listen(4002, () => console.log("server is running in port 4002"));

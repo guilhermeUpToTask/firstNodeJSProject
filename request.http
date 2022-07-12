@@ -3,5 +3,27 @@ Content-Type: application/json
 
 {
     "name" : "boots",
-    "price" : 2.99
+    "price" : 5.99
 }
+
+###
+
+GET http://localhost:4002/products
+
+###
+
+GET http://localhost:4002/products/402261c9-a889-4a4e-b1a4-3c23addd8b18
+
+###
+
+PUT http://localhost:4002/products/a16aa4df-7b5d-4f3e-8a44-e898ec9511a4
+Content-Type: application/json
+
+{
+    "name" : "new boots",
+    "price" : 15.99
+}
+
+###
+
+DELETE http://localhost:4002/products/601f2dc1-845d-4115-9eef-c15403a363e8
